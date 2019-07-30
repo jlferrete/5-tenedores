@@ -30,7 +30,7 @@ export const RegisterOptions = {
             secureTextEntry: true
         },
         passwordConfirmation: {
-            label: "Repetir Contraseña",
+            label: "Repetir Contraseña (*)",
             placeholder: "Repite tu contraseña",
             error: "Contraseña invalida",
             password: true,
