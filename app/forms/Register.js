@@ -2,6 +2,7 @@ import React from 'react';
 
 import t from 'tcomb-form-native';
 import formValidation from "../utils/Validation";
+import inputTemplate from './templates/Input';
 
 export const RegisterStruct = t.struct({
     name: t.String,
@@ -13,28 +14,41 @@ export const RegisterStruct = t.struct({
 export const RegisterOptions = {
     fields: {
         name: {
-            label: "Nombre (*)",
-            placeholder: "Escribe tu nombre y apellidos",
-            error: "Nombre invalido"
+            template: inputTemplate,
+            config: {
+                placeholder: "Escribe tu nombre y apellidos",
+                iconType: "material-community",
+                iconName: "account-outline"
+
+            }
         },
         email: {
-            label: "Email (*)",
-            placeholder: "Escribe tu email",
-            error: "Email invalido"
+            template: inputTemplate,
+            config: {
+                placeholder: "Escribe tu email",
+                iconType: "material-community",
+                iconName: "at"
+            }
         },
         password: {
-            label: "Contraseña (*)",
-            placeholder: "Escribe tu contraseña",
-            error: "Contraseña invalida",
-            password: true,
-            secureTextEntry: true
+            template: inputTemplate,
+            config: {
+                placeholder: "Escribe tu contraseña",
+                iconType: "material-community",
+                iconName: "lock-outline",
+                password: true,
+                secureTextEntry: true
+            }
         },
         passwordConfirmation: {
-            label: "Repetir Contraseña (*)",
-            placeholder: "Repite tu contraseña",
-            error: "Contraseña invalida",
-            password: true,
-            secureTextEntry: true
+            template: inputTemplate,
+            config: {
+                placeholder: "Repite tu contraseña",
+                iconType: "material-community",
+                iconName: "lock-reset",
+                password: true,
+                secureTextEntry: true
+            }
         }
     }
-}
+};
