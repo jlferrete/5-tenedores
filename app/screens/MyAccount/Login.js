@@ -1,10 +1,27 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, ActivityIndicator } from 'react-native';
+import { Image, Button } from "react-native-elements";
 
-import { Image } from "react-native-elements";
+import t from 'tcomb-form-native';
+
+const Form = t.form.Form;
+import { LoginStruct, LoginOptions } from '../../forms/Login';
 
 export default class Login extends Component {
+
+    constructor() {
+        super();
+
+        this.state = {
+            loginStruct: LoginStruct,
+            loginOptions: LoginOptions
+        };
+    }
+
     render() {
+
+        const { loginStruct, loginOptions } = this.state;
+
         return (
             <View style={styles.viewBody}>
                 <Image
@@ -13,7 +30,11 @@ export default class Login extends Component {
                     PlaceholderContent={<ActivityIndicator />}
                     resizeMode="contain"
                 />
-                <Text>Login Screen...</Text>
+
+                <View style={styles.viewForm}>
+                    <Form ref="loginForm" type={loginStruct} options={loginOptions} />
+                    <Button buttonStyle={styles.buttonLoginContainer} title="Login" />
+                </View>
             </View>
         );
     }
@@ -25,10 +46,18 @@ const styles = StyleSheet.create({
         marginLeft: 40,
         marginRight: 40,
         marginTop: 40,
-        alignItems: "center"
     },
     logo: {
         width: 300,
         height: 150
+    },
+    viewForm: {
+        marginTop: 50
+    },
+    buttonLoginContainer: {
+        backgroundColor: "#00a680",
+        marginTop: 20,
+        marginLeft: 10,
+        marginRight: 10
     }
 });
