@@ -14,6 +14,7 @@ import SearchScreen from "../screens/Search";
 //Screen MyAccount
 import MyAccountScreen from "../screens/MyAccount/MyAccount";
 import RegisterScreen from "../screens/MyAccount/Register";
+import LoginScreen from "../screens/MyAccount/Login";
 
 //Stacks
 const homeScreenStack = createStackNavigator({
@@ -51,6 +52,12 @@ const MyAccountScreenStack = createStackNavigator({
         screen: RegisterScreen,
         navigationOptions: ({ navigation }) => ({
             title: "Registro"
+        })
+    },
+    Login: {
+        screen: LoginScreen,
+        navigationOptions: ({ navigation }) => ({
+            title: "Login"
         })
     }
 });

@@ -28,8 +28,6 @@ export default class Register extends Component {
 
     register = () => {
 
-
-
         const { password, passwordConfirmation } = this.state.formData;
 
         if (password == passwordConfirmation) {
