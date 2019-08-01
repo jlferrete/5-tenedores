@@ -6,7 +6,7 @@ import t from 'tcomb-form-native';
 const Form = t.form.Form;
 import { RegisterStruct, RegisterOptions } from '../../forms/Register';
 
-
+import * as firebase from 'firebase';
 
 export default class Register extends Component {
     constructor() {
@@ -33,8 +33,11 @@ export default class Register extends Component {
             const validate = this.refs.registerForm.getValue();
 
             if (validate) {
-                this.setState({
-                    formErrorMessage: ""
+                this.setState({ formErrorMessage: "" });
+                firebase.auth().createUserWithEmailAndPassword(validate.email, validate.password).then(resolve => {
+                    console.log("Registro Correcto");
+                }).catch(err => {
+                    console.log("El email ya está en uso.");
                 })
             } else {
                 this.setState({
