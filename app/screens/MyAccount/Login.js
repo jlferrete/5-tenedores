@@ -26,6 +26,7 @@ export default class Login extends Component {
             <View style={styles.viewBody}>
                 <Image
                     source={require('../../../assets/img/5-tenedores-letras-icono-logo.png')}
+                    containerStyle={styles.containerLogo}
                     style={styles.logo}
                     PlaceholderContent={<ActivityIndicator />}
                     resizeMode="contain"
@@ -46,6 +47,9 @@ const styles = StyleSheet.create({
         marginLeft: 40,
         marginRight: 40,
         marginTop: 40,
+    },
+    containerLogo: {
+        alignItems: "center"
     },
     logo: {
         width: 300,
