@@ -14,13 +14,36 @@ export default class Login extends Component {
 
         this.state = {
             loginStruct: LoginStruct,
-            loginOptions: LoginOptions
+            loginOptions: LoginOptions,
+            loginData: {
+                email: "",
+                password: ""
+            },
+            loginErrorMessage: ""
         };
+    }
+
+    login = () => {
+        const validate = this.refs.loginForm.getValue();
+
+        if (!validate) {
+            this.setState({
+                loginErrorMessage: "Los datos del formulario son erróneos"
+            });
+        } else {
+            this.setState({ loginErrorMessage: "" });
+        }
+    }
+
+    onChangeFormLogin = (formValue) => {
+        this.setState({
+            loginData: formValue
+        });
     }
 
     render() {
 
-        const { loginStruct, loginOptions } = this.state;
+        const { loginStruct, loginOptions, loginErrorMessage } = this.state;
 
         return (
             <View style={styles.viewBody}>
@@ -33,8 +56,18 @@ export default class Login extends Component {
                 />
 
                 <View style={styles.viewForm}>
-                    <Form ref="loginForm" type={loginStruct} options={loginOptions} />
-                    <Button buttonStyle={styles.buttonLoginContainer} title="Login" />
+                    <Form ref="loginForm"
+                        type={loginStruct}
+                        options={loginOptions}
+                        value={this.state.loginData}
+                        onChange={(formValue) => this.onChangeFormLogin(formValue)}
+                    />
+                    <Button buttonStyle={styles.buttonLoginContainer}
+                        title="Login"
+                        onPress={() => this.login()}
+                    />
+
+                    <Text style={styles.loginErrorMessage}>{loginErrorMessage}</Text>
                 </View>
             </View>
         );
@@ -63,5 +96,10 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginLeft: 10,
         marginRight: 10
+    },
+    loginErrorMessage: {
+        color: "#f00",
+        textAlign: "center",
+        marginTop: 20
     }
 });
