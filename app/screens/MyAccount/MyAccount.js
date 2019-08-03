@@ -21,6 +21,10 @@ export default class MyAccount extends Component {
                 this.setState({
                     login: true
                 });
+            } else {
+                this.setState({
+                    login: false
+                });
             }
         });
     }
@@ -29,14 +33,19 @@ export default class MyAccount extends Component {
         this.props.navigation.navigate(nameScreen)
     };
 
+    logout = () => {
+        firebase.auth().signOut();
+    };
+
     render() {
 
         const { login } = this.state;
 
         if (login) {
             return (
-                <View>
+                <View style={styles.viewBody}>
                     <Text>Estás logueado correctamente</Text>
+                    <Button title="Cerrar sesión" onPress={() => this.logout()} />
                 </View>
             );
 
