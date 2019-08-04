@@ -9,7 +9,7 @@ const Form = t.form.Form;
 import { LoginStruct, LoginOptions } from '../../forms/Login';
 
 import * as firebase from 'firebase';
-import { FacebookApi } from "../../utils/Social";
+import * as Facebook from "expo-facebook"; const { type, token } = await Facebook.logInWithReadPermissionsAsync(FacebookApi.application_id, { permissions: FacebookApi.permissions });
 
 export default class Login extends Component {
 
