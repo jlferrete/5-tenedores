@@ -9,7 +9,10 @@ const Form = t.form.Form;
 import { LoginStruct, LoginOptions } from '../../forms/Login';
 
 import * as firebase from 'firebase';
-import * as Facebook from "expo-facebook"; const { type, token } = await Facebook.logInWithReadPermissionsAsync(FacebookApi.application_id, { permissions: FacebookApi.permissions });
+
+import { FacebookApi } from "../../utils/Social";
+import * as Facebook from "expo-facebook";
+
 
 export default class Login extends Component {
 
@@ -52,28 +55,31 @@ export default class Login extends Component {
     };
 
     loginFacebook = async () => {
-        const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(
+        const { type, token } = await Facebook.logInWithReadPermissionsAsync(
             FacebookApi.application_id,
             { permissions: FacebookApi.permissions }
         );
 
-        if (type == "success") {
-            const credentials = firebase.auth.FacebookAuthProvider.credential(token);
-            firebase
-                .auth()
-                .signInWithCredential(credentials)
-                .then(() => {
-                    console.log('Login correcto');
-                    this.props.navigation.goBack();
-                })
-                .catch(err => {
-                    console.log('Erro accediendo con Facebook, intentelo mas tarde');
-                });
-        } else if (type == "cancel") {
-            console.log('Inicio de sesion cancelad');
-        } else {
-            console.log('Error desconocido, intentelo mas tarde');
-        }
+        // if (type == "success") {
+        //     const credentials = firebase.auth.FacebookAuthProvider.credential(token);
+        //     firebase
+        //         .auth()
+        //         .signInWithCredential(credentials)
+        //         .then(() => {
+        //             console.log('Login correcto');
+        //             this.props.navigation.goBack();
+        //         })
+        //         .catch(err => {
+        //             console.log('Erro accediendo con Facebook, intentelo mas tarde');
+        //         });
+        // } else if (type == "cancel") {
+        //     console.log('Inicio de sesion cancelad');
+        // } else {
+        //     console.log('Error desconocido, intentelo mas tarde');
+        // }
+
+        console.log(type);
+        console.log(token);
     };
 
     onChangeFormLogin = (formValue) => {
@@ -126,7 +132,7 @@ export default class Login extends Component {
                 />
             </View>
         );
-    }
+    };
 }
 
 const styles = StyleSheet.create({
