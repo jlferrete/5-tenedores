@@ -53,7 +53,7 @@ export default class MyAccount extends Component {
 
         } else {
             return (
-                <MyAccountGuest />
+                <MyAccountGuest goToScreen={this.goToScreen} />
             );
         }
     }
