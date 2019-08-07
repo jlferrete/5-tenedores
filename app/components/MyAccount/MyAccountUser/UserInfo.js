@@ -9,28 +9,24 @@ export default class UserInfo extends Component {
         super(state);
 
         this.state = {
-            userInfo: {
-                displayName: "",
-                email: "",
-                photoUrl: ""
-            }
+            userInfo: {}
         };
     }
 
-    componentDidMount = () => {
-        this.getUserInfo();
+    componentDidMount = async () => {
+        await this.getUserInfo();
     };
 
-    getUserInfo = async () => {
+    getUserInfo = () => {
         const user = firebase.auth().currentUser;
 
-        await user.providerData.forEach(userInfo => {
+        user.providerData.forEach(userInfo => {
             this.setState({
                 userInfo
             });
         });
 
-        console.log(this.state);
+
     };
 
     render() {
