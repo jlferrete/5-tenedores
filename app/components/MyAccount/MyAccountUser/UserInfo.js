@@ -25,14 +25,26 @@ export default class UserInfo extends Component {
                 userInfo
             });
         });
-
-
     };
 
+    checkUserAvatar = photoURL => {
+        return photoURL ? photoURL
+            : "https://api.adorable.io/avatars/285/abott@adorable.png"
+    }
+
     render() {
+        const { displayName, email, photoURL } = this.state.userInfo;
         return (
             <View style={styles.viewUserInfo}>
-                <Text>User info...</Text>
+                <Avatar
+                    rounded
+                    size="large"
+                    source={{ uri: this.checkUserAvatar(photoURL) }}
+                    containerStyle={styles.userInfoAvatar}
+                />
+                <Text style={styles.displayname}>{displayName}</Text>
+                <Text>{email}</Text>
+
             </View>
         );
     }
@@ -41,6 +53,13 @@ export default class UserInfo extends Component {
 const styles = StyleSheet.create({
     viewUserInfo: {
         alignItems: "center",
-        flexDirection: "row"
+        flexDirection: "row",
+        marginTop: 30
+    },
+    userInfoAvatar: {
+        marginRight: 20
+    },
+    displayName: {
+        fontWeight: "bold"
     }
 });
