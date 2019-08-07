@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, ActivityIndicator } from "react-native";
-import { Button, Image } from "react-native-elements";
 
-export default class MuAccountUser extends Component {
+import UserInfo from './UserInfo';
+
+export default class MyAccountUser extends Component {
     constructor(props) {
         super(props);
     }
@@ -10,7 +11,7 @@ export default class MuAccountUser extends Component {
     render() {
         return (
             <View style={styles.viewBody}>
-                <Text>My Account User...</Text>
+                <UserInfo />
             </View>
         );
     }
