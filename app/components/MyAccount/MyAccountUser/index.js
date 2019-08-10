@@ -10,18 +10,11 @@ export default class MyAccountUser extends Component {
 
     render() {
         return (
-            <View style={styles.viewBody}>
+            <View>
                 <UserInfo />
             </View>
         );
     }
 }
 
-const styles = StyleSheet.create({
-    viewBody: {
-        flex: 1,
-        alignItems: "center",
-        paddingLeft: 30,
-        paddingRight: 30
-    }
-});
+const styles = StyleSheet.create({});
