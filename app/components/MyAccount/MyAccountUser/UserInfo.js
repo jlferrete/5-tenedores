@@ -47,9 +47,8 @@ export default class UserInfo extends Component {
                     />
                     <Text style={styles.displayname}>{displayName}</Text>
                     <Text>{email}</Text>
-
-                    <UpdateUserInfo />
                 </View>
+
                 <UpdateUserInfo />
             </View>
         );
