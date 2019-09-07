@@ -34,7 +34,12 @@ const styles = StyleSheet.create({
     viewOverlay: {
         width: "100%",
         backgroundColor: "#fff",
-        padding: 20
+        padding: 20,
+        borderColor: "#00a680",
+        borderLeftWidth: 2,
+        borderRightWidth: 2,
+        borderTopWidth: 2,
+        borderBottomWidth: 2,
     },
     inputContainer: {
         marginBottom: 20
